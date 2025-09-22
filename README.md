@@ -26,5 +26,37 @@ The project is designed for **fitness tracking and health insights**, making it 
 
 ---
 
-## 📂 Project Structure
+
+---
+
+## 📊 Example Workflow
+1. Preprocess dataset and split into training/testing sets  
+2. Train regression model (e.g., Linear Regression, Random Forest)  
+3. Evaluate performance using MAE, MSE, and R² Score  
+4. Deploy model with Flask and connect to frontend  
+5. Enter details in the web app to get calories burnt prediction  
+
+---
+
+## 🌟 Future Improvements
+- Add more features (e.g., activity type, intensity level)  
+- Improve accuracy with advanced models (XGBoost, Neural Networks)  
+- Deploy on **Streamlit, Heroku, or AWS** for public use  
+
+---
+
+## 📌 How to Run
+```bash
+# Clone the repository
+git clone https://github.com/sushverse98/CaloriesBurntPrediction.git
+
+# Navigate into the project
+cd CaloriesBurntPrediction
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the Flask app
+python app.py
+
 
