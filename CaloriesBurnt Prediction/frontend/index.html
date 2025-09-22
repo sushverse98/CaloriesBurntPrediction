@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calories Burnt Prediction</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Predict Calories Burnt</h1>
+        <form id="calories-form">
+            <label for="gender">Gender:</label><br>
+            <select id="gender" name="gender">
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select><br>
+
+            <label for="age">Age:</label><br>
+            <input type="number" id="age" name="age" required><br>
+
+            <label for="height">Height (cm):</label><br>
+            <input type="number" id="height" name="height" required><br>
+
+            <label for="weight">Weight (kg):</label><br>
+            <input type="number" id="weight" name="weight" required><br>
+
+            <label for="duration">Exercise Duration (minutes):</label><br>
+            <input type="number" id="duration" name="duration" required><br>
+
+            <label for="heartrate">Heart Rate (bpm):</label><br>
+            <input type="number" id="heartrate" name="heartrate" required><br>
+
+            <label for="body_temp">Body Temperature (°C):</label><br>
+            <input type="number" id="body_temp" name="body_temp" required><br>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <div id="result">
+            <!-- Prediction result will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        $('#calories-form').submit(function(event) {
+            event.preventDefault();  // Prevents the form from submitting normally
+
+            $.ajax({
+                url: '/predict',
+                type: 'POST',
+                data: $(this).serialize(),  // Serializes the form data
+                success: function(response) {
+                    // Display the prediction result in the 'result' div
+                    $('#result').html('<h2>Predicted Calories Burnt: ' + response.prediction + '</h2>');
+                },
+                error: function(xhr, status, error) {
+                    console.log("Error:", error);  // Logs any error that occurs during the request
+                    alert("An error occurred while predicting calories.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
